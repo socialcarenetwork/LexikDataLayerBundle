@@ -3,11 +3,13 @@
 namespace Lexik\Bundle\DataLayerBundle\Twig\Extension;
 
 use Lexik\Bundle\DataLayerBundle\Manager\DataLayerManager;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
 /**
  * DataLayerExtension
  */
-class DataLayerExtension extends \Twig_Extension
+class DataLayerExtension extends AbstractExtension
 {
     /**
      * @var DataLayerManager
@@ -22,10 +24,7 @@ class DataLayerExtension extends \Twig_Extension
         $this->dataLayerManager = $manager;
     }
 
-    /**
-     * @return array
-     */
-    public function getDataLayer()
+    public function getDataLayer(): string
     {
         $data = $this->dataLayerManager->all();
         $this->dataLayerManager->reset();
@@ -39,7 +38,7 @@ class DataLayerExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('lexik_data_layer', [$this, 'getDataLayer'], ['is_safe' => ['html']]),
+            new TwigFunction('lexik_data_layer', [$this, 'getDataLayer'], ['is_safe' => ['html']]),
         ];
     }
 

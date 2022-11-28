@@ -4,4 +4,4 @@ security:
             memory:
     firewalls:
         main:
-            anonymous: ~
+            security: false

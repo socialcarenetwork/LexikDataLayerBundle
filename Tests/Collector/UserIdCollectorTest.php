@@ -21,7 +21,7 @@ class UserIdCollectorTest extends TestCase
         $collector = new UserIdCollector($this->getTokenStorageMock());
         $collector->handle($data);
 
-        $this->assertInternalType('array', $data[0]);
+        $this->assertIsArray($data[0]);
         $this->assertArrayHasKey('user_id', $data[0]);
         $this->assertEquals(md5('user'), $data[0]['user_id']);
     }
@@ -37,7 +37,7 @@ class UserIdCollectorTest extends TestCase
 
         $userMock
             ->expects($this->any())
-            ->method('getUsername')
+            ->method('getUserIdentifier')
             ->will($this->returnValue('user'));
 
         $tokenMock = $this

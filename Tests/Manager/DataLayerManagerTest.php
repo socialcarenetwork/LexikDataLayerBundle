@@ -1,6 +1,6 @@
 <?php
 
-namespace Lexik\Bundle\DataLayerBundle\Tests\Service;
+namespace Lexik\Bundle\DataLayerBundle\Tests\Manager;
 
 use Lexik\Bundle\DataLayerBundle\Collector\CollectorChain;
 use Lexik\Bundle\DataLayerBundle\Collector\CollectorInterface;

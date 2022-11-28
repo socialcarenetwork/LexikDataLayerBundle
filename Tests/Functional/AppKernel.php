@@ -13,7 +13,7 @@ class AppKernel extends Kernel
     /**
      * {@inheritdoc}
      */
-    public function registerBundles()
+    public function registerBundles(): iterable
     {
         return [
             new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
@@ -25,7 +25,7 @@ class AppKernel extends Kernel
     /**
      * {@inheritdoc}
      */
-    public function getCacheDir()
+    public function getCacheDir(): string
     {
         return sys_get_temp_dir().'/LexikDataLayerBundle/';
     }
@@ -33,7 +33,7 @@ class AppKernel extends Kernel
     /**
      * {@inheritdoc}
      */
-    public function getLogDir()
+    public function getLogDir(): string
     {
         return sys_get_temp_dir().'/LexikDataLayerBundle/';
     }
@@ -44,10 +44,6 @@ class AppKernel extends Kernel
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
         $loader->load(__DIR__.'/config/config.yml');
-        if (self::VERSION_ID >= 34001 && self::VERSION_ID < 40000) {
-            $loader->load(__DIR__.'/config/security34.yml');
-        } else {
-            $loader->load(__DIR__.'/config/security.yml');
-        }
+        $loader->load(__DIR__.'/config/security.yml');
     }
 }

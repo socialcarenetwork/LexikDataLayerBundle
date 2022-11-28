@@ -31,7 +31,7 @@ class UserIdCollector implements CollectorInterface
         $token = $this->tokenStorage->getToken();
 
         if ($token && $token->getUser() && $token->getUser() instanceof UserInterface) {
-            $data[] = ['user_id' => md5($token->getUser()->getUsername())];
+            $data[] = ['user_id' => md5($token->getUser()->getUserIdentifier())];
         }
     }
 }
